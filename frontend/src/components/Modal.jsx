@@ -20,7 +20,13 @@ export default function Modal({ titulo, onCerrar, children }) {
 
   return (
     <div className="modal__fondo" onMouseDown={(e) => e.target === e.currentTarget && onCerrar()}>
-      <div className="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" ref={ref}>
+      <div
+        className="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-titulo"
+        ref={ref}
+      >
         <div className="modal__cabecera">
           <h2 id="modal-titulo">{titulo}</h2>
           <button type="button" className="btn-icono" onClick={onCerrar}>

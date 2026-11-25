@@ -45,7 +45,8 @@ export const texto = (v, min, max, etiqueta = 'El texto') => {
 
 export const foto = (archivo) => {
   if (!archivo) return 'La fotografía es obligatoria.';
-  if (!['image/jpeg', 'image/png'].includes(archivo.type)) return 'Formato no permitido: usa JPG o PNG.';
+  if (!['image/jpeg', 'image/png'].includes(archivo.type))
+    return 'Formato no permitido: usa JPG o PNG.';
   if (archivo.size > 5 * 1024 * 1024) return 'La imagen supera el máximo de 5 MB.';
   return '';
 };

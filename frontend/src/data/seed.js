@@ -31,11 +31,31 @@ export const ZONAS_INICIALES = [
 ];
 
 export const CATEGORIAS_INICIALES = [
-  { id: 1, nombre: 'Escombros', descripcion: 'Residuos de construcción y demolición', activo: true },
-  { id: 2, nombre: 'Residuos orgánicos', descripcion: 'Restos de comida, poda y material vegetal', activo: true },
+  {
+    id: 1,
+    nombre: 'Escombros',
+    descripcion: 'Residuos de construcción y demolición',
+    activo: true,
+  },
+  {
+    id: 2,
+    nombre: 'Residuos orgánicos',
+    descripcion: 'Restos de comida, poda y material vegetal',
+    activo: true,
+  },
   { id: 3, nombre: 'Llantas', descripcion: 'Llantas y neumáticos en desuso', activo: true },
-  { id: 4, nombre: 'Residuos domiciliarios', descripcion: 'Basura doméstica mezclada', activo: true },
-  { id: 5, nombre: 'Voluminosos', descripcion: 'Muebles, colchones y electrodomésticos', activo: true },
+  {
+    id: 4,
+    nombre: 'Residuos domiciliarios',
+    descripcion: 'Basura doméstica mezclada',
+    activo: true,
+  },
+  {
+    id: 5,
+    nombre: 'Voluminosos',
+    descripcion: 'Muebles, colchones y electrodomésticos',
+    activo: true,
+  },
 ];
 
 export const CIUDADANOS = [
@@ -85,12 +105,29 @@ export const REPORTES_INICIALES = base.map(
     foto: FOTOS[i % FOTOS.length],
     observaciones: estadoId >= 2 ? 'Cuadrilla asignada para la atención del reporte.' : '',
     operarioId: estadoId >= 2 && estadoId !== 4 ? (i % 3) + 1 : null,
-  }),
+  })
 );
 
 // Cuentas de demostración (no hay autenticación real hasta conectar el backend).
 export const USUARIOS_DEMO = [
-  { correo: 'laura.martinez@example.com', clave: 'Ciudadano123', rol: 'ciudadano', nombre: 'Laura Martínez', ciudadanoId: 1 },
-  { correo: 'jorge.salazar@aseo.example.com', clave: 'Operario123', rol: 'operario', nombre: 'Jorge Salazar', operarioId: 1 },
-  { correo: 'admin@microbasureros.example.com', clave: 'Admin12345', rol: 'administrador', nombre: 'Administrador Principal' },
+  {
+    correo: 'laura.martinez@example.com',
+    clave: 'Ciudadano123',
+    rol: 'ciudadano',
+    nombre: 'Laura Martínez',
+    ciudadanoId: 1,
+  },
+  {
+    correo: 'jorge.salazar@aseo.example.com',
+    clave: 'Operario123',
+    rol: 'operario',
+    nombre: 'Jorge Salazar',
+    operarioId: 1,
+  },
+  {
+    correo: 'admin@microbasureros.example.com',
+    clave: 'Admin12345',
+    rol: 'administrador',
+    nombre: 'Administrador Principal',
+  },
 ];

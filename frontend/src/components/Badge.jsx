@@ -1,6 +1,11 @@
 import { IconAlert, IconCheck } from './Icons.jsx';
 
-const CLASES = { 1: 'badge--pendiente', 2: 'badge--proceso', 3: 'badge--resuelto', 4: 'badge--rechazado' };
+const CLASES = {
+  1: 'badge--pendiente',
+  2: 'badge--proceso',
+  3: 'badge--resuelto',
+  4: 'badge--rechazado',
+};
 
 // El estado se comunica con texto + icono + color (no solo con color).
 export default function Badge({ estadoId, nombre }) {

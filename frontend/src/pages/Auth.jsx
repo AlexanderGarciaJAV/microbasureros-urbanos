@@ -6,13 +6,20 @@ import { useApp } from '../context/AppContext.jsx';
 import { USUARIOS_DEMO } from '../data/seed.js';
 import * as v from '../utils/validators.js';
 
-export const inicioPorRol = (rol) => (rol === 'operario' ? '/tareas' : rol === 'administrador' ? '/estadisticas' : '/reportar');
+export const inicioPorRol = (rol) =>
+  rol === 'operario' ? '/tareas' : rol === 'administrador' ? '/estadisticas' : '/reportar';
 
 export default function Auth() {
   const { sesion, iniciarSesion, registrarCiudadano, notificar } = useApp();
   const navegar = useNavigate();
   const [modo, setModo] = useState('registro'); // 'registro' | 'login'
-  const [form, setForm] = useState({ nombre: '', apellido: '', correo: '', clave: '', confirmar: '' });
+  const [form, setForm] = useState({
+    nombre: '',
+    apellido: '',
+    correo: '',
+    clave: '',
+    confirmar: '',
+  });
   const [errores, setErrores] = useState({});
   const [errorGeneral, setErrorGeneral] = useState('');
 
@@ -45,7 +52,9 @@ export default function Auth() {
     if (v.hayErrores(e)) return;
     const r = modo === 'login' ? iniciarSesion(form.correo, form.clave) : registrarCiudadano(form);
     if (!r.ok) return setErrorGeneral(r.error);
-    notificar(modo === 'login' ? `Bienvenido(a), ${r.usuario.nombre}.` : 'Cuenta creada correctamente.');
+    notificar(
+      modo === 'login' ? `Bienvenido(a), ${r.usuario.nombre}.` : 'Cuenta creada correctamente.'
+    );
     navegar(inicioPorRol(r.usuario.rol));
   };
 
@@ -67,10 +76,20 @@ export default function Auth() {
 
       <section className="tarjeta auth__tarjeta" aria-labelledby="auth-titulo">
         <div className="pestanas" role="tablist" aria-label="Acceso">
-          <button type="button" role="tab" aria-selected={modo === 'registro'} onClick={() => cambiarModo('registro')}>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={modo === 'registro'}
+            onClick={() => cambiarModo('registro')}
+          >
             Crear cuenta
           </button>
-          <button type="button" role="tab" aria-selected={modo === 'login'} onClick={() => cambiarModo('login')}>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={modo === 'login'}
+            onClick={() => cambiarModo('login')}
+          >
             Iniciar sesión
           </button>
         </div>
@@ -86,15 +105,69 @@ export default function Auth() {
 
           {modo === 'registro' && (
             <div className="fila">
-              <Field label="Nombre" name="nombre" value={form.nombre} onChange={cambiar} error={errores.nombre} placeholder="Tu nombre" autoComplete="given-name" maxLength={80} required />
-              <Field label="Apellido" name="apellido" value={form.apellido} onChange={cambiar} error={errores.apellido} placeholder="Tu apellido" autoComplete="family-name" maxLength={80} required />
+              <Field
+                label="Nombre"
+                name="nombre"
+                value={form.nombre}
+                onChange={cambiar}
+                error={errores.nombre}
+                placeholder="Tu nombre"
+                autoComplete="given-name"
+                maxLength={80}
+                required
+              />
+              <Field
+                label="Apellido"
+                name="apellido"
+                value={form.apellido}
+                onChange={cambiar}
+                error={errores.apellido}
+                placeholder="Tu apellido"
+                autoComplete="family-name"
+                maxLength={80}
+                required
+              />
             </div>
           )}
 
-          <Field label="Correo electrónico" type="email" name="correo" value={form.correo} onChange={cambiar} error={errores.correo} placeholder="ejemplo@correo.com" autoComplete="email" maxLength={120} required />
-          <Field label="Contraseña" type="password" name="clave" value={form.clave} onChange={cambiar} error={errores.clave} placeholder={modo === 'registro' ? 'Mínimo 8 caracteres' : 'Tu contraseña'} hint={modo === 'registro' ? 'Combina letras y números.' : undefined} autoComplete={modo === 'registro' ? 'new-password' : 'current-password'} maxLength={64} required />
+          <Field
+            label="Correo electrónico"
+            type="email"
+            name="correo"
+            value={form.correo}
+            onChange={cambiar}
+            error={errores.correo}
+            placeholder="ejemplo@correo.com"
+            autoComplete="email"
+            maxLength={120}
+            required
+          />
+          <Field
+            label="Contraseña"
+            type="password"
+            name="clave"
+            value={form.clave}
+            onChange={cambiar}
+            error={errores.clave}
+            placeholder={modo === 'registro' ? 'Mínimo 8 caracteres' : 'Tu contraseña'}
+            hint={modo === 'registro' ? 'Combina letras y números.' : undefined}
+            autoComplete={modo === 'registro' ? 'new-password' : 'current-password'}
+            maxLength={64}
+            required
+          />
           {modo === 'registro' && (
-            <Field label="Confirmar contraseña" type="password" name="confirmar" value={form.confirmar} onChange={cambiar} error={errores.confirmar} placeholder="Repite tu contraseña" autoComplete="new-password" maxLength={64} required />
+            <Field
+              label="Confirmar contraseña"
+              type="password"
+              name="confirmar"
+              value={form.confirmar}
+              onChange={cambiar}
+              error={errores.confirmar}
+              placeholder="Repite tu contraseña"
+              autoComplete="new-password"
+              maxLength={64}
+              required
+            />
           )}
 
           <button type="submit" className="btn btn--primario btn--bloque">
@@ -104,7 +177,11 @@ export default function Auth() {
 
         <p className="auth__cambio">
           {modo === 'registro' ? '¿Ya tienes cuenta?' : '¿Aún no tienes cuenta?'}{' '}
-          <button type="button" className="enlace" onClick={() => cambiarModo(modo === 'registro' ? 'login' : 'registro')}>
+          <button
+            type="button"
+            className="enlace"
+            onClick={() => cambiarModo(modo === 'registro' ? 'login' : 'registro')}
+          >
             {modo === 'registro' ? 'Inicia sesión' : 'Regístrate'}
           </button>
         </p>
@@ -117,14 +194,25 @@ export default function Auth() {
           {USUARIOS_DEMO.map((u) => (
             <li key={u.correo}>
               <strong>{u.rol}</strong>: <code>{u.correo}</code> / <code>{u.clave}</code>
-              <button type="button" className="enlace" onClick={() => { setModo('login'); setForm((f) => ({ ...f, correo: u.correo, clave: u.clave })); setErrores({}); }}>
+              <button
+                type="button"
+                className="enlace"
+                onClick={() => {
+                  setModo('login');
+                  setForm((f) => ({ ...f, correo: u.correo, clave: u.clave }));
+                  setErrores({});
+                }}
+              >
                 Usar
               </button>
             </li>
           ))}
         </ul>
       </aside>
-      <p className="auth__pie">Al registrarte, contribuyes al mantenimiento y limpieza de los espacios públicos de nuestra ciudad.</p>
+      <p className="auth__pie">
+        Al registrarte, contribuyes al mantenimiento y limpieza de los espacios públicos de nuestra
+        ciudad.
+      </p>
     </div>
   );
 }
