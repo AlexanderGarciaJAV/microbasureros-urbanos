@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import EncabezadoPagina from '@/components/ui/EncabezadoPagina.jsx';
 import EstadoVacio from '@/components/ui/EstadoVacio.jsx';
@@ -25,6 +26,16 @@ export default function TareasPage() {
   const { nombreCategoria, nombreZona } = useCatalogos();
   const { tareas, cerrados, seleccionado, esAdministrador } = useTareas(id);
   const eventos = useSeguimiento(seleccionado?.id);
+  const listaRef = useRef(null);
+  const detalleRef = useRef(null);
+  const idPrevio = useRef(id);
+
+  // En el celular la lista y el detalle se reemplazan: el foco acompaña a la parte visible.
+  useEffect(() => {
+    if (idPrevio.current === id) return;
+    idPrevio.current = id;
+    (id ? detalleRef : listaRef).current.focus();
+  }, [id]);
 
   const guardarEstado = async ({ estadoId }) => {
     const nuevo = Number(estadoId);
@@ -50,7 +61,7 @@ export default function TareasPage() {
         descripcion={`${pluralizar(tareas.length, 'reporte abierto', 'reportes abiertos')}. Primero los más antiguos.`}
       />
       <div className={`tareas ${seleccionado ? 'tareas--con-detalle' : ''}`}>
-        <section className="tareas__lista" aria-label="Reportes">
+        <section ref={listaRef} tabIndex={-1} className="tareas__lista" aria-label="Reportes">
           {tareas.length === 0 ? (
             <EstadoVacio
               icono={IconEscoba}
@@ -68,7 +79,13 @@ export default function TareasPage() {
           )}
         </section>
 
-        <div className="tareas__detalle">
+        <div
+          ref={detalleRef}
+          tabIndex={-1}
+          className="tareas__detalle"
+          role="region"
+          aria-label="Detalle del reporte"
+        >
           {seleccionado ? (
             <>
               <Link to={RUTAS.tareas} className="volver">

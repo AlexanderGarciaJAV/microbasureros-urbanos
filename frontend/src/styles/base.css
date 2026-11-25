@@ -96,8 +96,7 @@ small {
   outline-offset: 2px;
 }
 
-h1:focus,
-main:focus {
+[tabindex='-1']:focus {
   outline: none;
 }
 
