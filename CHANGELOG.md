@@ -1,5 +1,9 @@
 # Historial de versiones
 
+## 1.1.1 - 2026-11-25
+
+- Corrección: la fotografía se recortaba en la vista previa y no igualaba al mapa (MBU-22).
+
 ## 1.1.0 - 2026-11-25
 
 - Frontend organizado por módulos con componentes reutilizables (MBU-22).
