@@ -1,9 +1,10 @@
 const express = require('express');
 const cors = require('cors');
+const env = require('./config/env');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: env.frontendUrl }));
 app.use(express.json());
 
 app.get('/api/v1/salud', (req, res) => {
