@@ -80,7 +80,7 @@ Verificación del frontend del proyecto formativo.
 | 32 | Se puede usar con teclado | Sí | Pestañas con flechas, diálogo con Tab y Escape, y enlace para saltar al contenido. |
 | 33 | El contraste cumple WCAG 2.1 AA | Sí | El texto va de 5,95:1 a 16,37:1. Los bordes de los campos tienen 4,28:1. |
 | 34 | Las áreas de toque son suficientes | Sí | Botones, enlaces del menú y filtros miden 44 px o más. |
-| 35 | El análisis automático no reporta fallas | Sí | axe-core: 0 violaciones en 15 vistas y tres tamaños de pantalla. |
+| 35 | El análisis automático no reporta fallas | Sí | axe-core: 0 violaciones en 14 vistas y tres tamaños de pantalla. |
 
 ## Verificación y versiones
 
@@ -96,15 +96,15 @@ Verificación del frontend del proyecto formativo.
 
 | Hallazgo | Aspecto | Corrección | Commit |
 |---|---|---|---|
-| El mensaje de error movía la página y el clic no llegaba al botón Enviar | Formularios | useFormulario.js no valida al salir del campo si el foco pasa a un botón | `5c0d3a6` |
-| Los campos vacíos se marcaban con error antes de enviar | Formularios | El campo vacío se avisa solo al enviar | `5c0d3a6` |
-| El foco se perdía cuando fallaba una eliminación | Accesibilidad | DialogoConfirmacion.jsx pasa el foco al mensaje | `b551cf0` |
-| En celular el foco se perdía al abrir una tarea | Accesibilidad | TareasPage.jsx pasa el foco al detalle o a la lista | `b551cf0` |
-| El ícono y el texto de la insignia quedaban en dos líneas | Diseño | Insignia alineada en una línea | `10d1864` |
-| El aviso de ingreso tapaba controles sin aportar | Experiencia de usuario | Se retiró el aviso | `10d1864` |
-| El operario podía cerrar un reporte sin registrar la limpieza | Regla de negocio | El resultado es obligatorio y las transiciones dependen del rol | `9df74c1` |
-| Los mensajes mostraban términos técnicos de la base de datos | Experiencia de usuario | Mensajes nuevos con la razón y la solución | `30361bb` |
-| Las fotos de prueba no correspondían al residuo | Datos de prueba | Ilustración por categoría | `386bc07` |
+| El mensaje de error movía la página y el clic no llegaba al botón Enviar | Formularios | useFormulario.js no valida al salir del campo si el foco pasa a un botón | `3e20a72` |
+| Los campos vacíos se marcaban con error antes de enviar | Formularios | El campo vacío se avisa solo al enviar | `3e20a72` |
+| El foco se perdía cuando fallaba una eliminación | Accesibilidad | DialogoConfirmacion.jsx pasa el foco al mensaje | `01a30a6` |
+| En celular el foco se perdía al abrir una tarea | Accesibilidad | TareasPage.jsx pasa el foco al detalle o a la lista | `01a30a6` |
+| El ícono y el texto de la insignia quedaban en dos líneas | Diseño | Insignia alineada en una línea | `7f44ea3` |
+| El aviso de ingreso tapaba controles sin aportar | Experiencia de usuario | Se retiró el aviso | `7f44ea3` |
+| El operario podía cerrar un reporte sin registrar la limpieza | Regla de negocio | El resultado es obligatorio y las transiciones dependen del rol | `a371e85` |
+| Los mensajes mostraban términos técnicos de la base de datos | Experiencia de usuario | Mensajes nuevos con la razón y la solución | `5612048` |
+| Las fotos de prueba no correspondían al residuo | Datos de prueba | Ilustración por categoría | `d7106bf` |
 
 ## Pendiente para la siguiente fase
 
