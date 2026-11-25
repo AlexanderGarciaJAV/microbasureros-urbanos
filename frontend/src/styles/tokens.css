@@ -1,0 +1,46 @@
+/* Decisiones visuales del sistema. Los demás archivos solo usan estas variables. */
+:root {
+  --verde-oscuro: #1b5e20;
+  --verde: #2e7d32;
+  --verde-fondo: #e6f2e7;
+  --azul: #0b57b0;
+  --azul-fondo: #e3eefb;
+  --rojo: #9a3412;
+  --rojo-fondo: #ffe9e2;
+  --ambar: #7a4b00;
+  --ambar-fondo: #fff0cf;
+
+  --texto: #1a1c1a;
+  --texto-suave: #4a4f4a;
+  --borde: #c9ceca;
+  --borde-control: #757c76;
+  --fondo: #f9faf8;
+  --superficie: #fff;
+  --superficie-2: #eff2ee;
+  --velo: rgb(17 27 18 / 55%);
+
+  --e1: 4px;
+  --e2: 8px;
+  --e3: 12px;
+  --e4: 16px;
+  --e5: 24px;
+  --e6: 32px;
+  --e7: 48px;
+
+  --letra: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --t-xs: 0.8125rem;
+  --t-sm: 0.9375rem;
+  --t-md: 1rem;
+  --t-lg: 1.125rem;
+  --t-xl: 1.375rem;
+  --t-2xl: clamp(1.625rem, 1.2rem + 1.8vw, 2.125rem);
+  --t-3xl: clamp(2rem, 1.3rem + 3vw, 3.25rem);
+
+  --radio: 10px;
+  --radio-lg: 16px;
+  --radio-total: 999px;
+  --sombra: 0 1px 2px rgb(20 40 22 / 8%);
+  --sombra-alta: 0 12px 32px rgb(20 40 22 / 22%);
+  --tactil: 44px;
+  --rapido: 160ms ease-out;
+}
