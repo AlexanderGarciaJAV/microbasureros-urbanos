@@ -1,0 +1,421 @@
+/* Acceso */
+.acceso {
+  display: grid;
+  gap: var(--e6);
+  align-items: center;
+  max-width: 1040px;
+  margin-inline: auto;
+}
+
+.acceso h1 {
+  max-width: 14ch;
+  color: var(--verde-oscuro);
+  font-size: var(--t-3xl);
+  line-height: 1.08;
+}
+
+.acceso__presentacion ol {
+  display: none;
+  gap: var(--e4);
+  margin-top: var(--e6);
+}
+
+.acceso__presentacion li {
+  display: flex;
+  align-items: center;
+  gap: var(--e3);
+  color: var(--texto-suave);
+}
+
+.acceso__presentacion li span {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: var(--tactil);
+  height: var(--tactil);
+  border-radius: 50%;
+  background: var(--verde-fondo);
+  color: var(--verde-oscuro);
+}
+
+.pestanas button:only-child,
+.acceso__tarjeta .pestanas button {
+  flex: 1;
+}
+
+.demo {
+  margin-top: var(--e5);
+  padding-top: var(--e4);
+  border-top: 1px solid var(--borde);
+  font-size: var(--t-sm);
+  color: var(--texto-suave);
+}
+
+.demo__botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e2);
+  margin-top: var(--e2);
+}
+
+.demo__botones .btn {
+  flex: 1 1 auto;
+}
+
+/* Reportar */
+.reporte-form {
+  display: grid;
+  gap: var(--e4);
+}
+
+.paso legend {
+  float: left;
+  display: flex;
+  align-items: center;
+  gap: var(--e3);
+  width: 100%;
+  margin-bottom: var(--e4);
+  padding: 0;
+  font-size: var(--t-lg);
+  font-weight: 700;
+}
+
+.paso legend + * {
+  clear: both;
+}
+
+.paso legend span {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--verde-oscuro);
+  color: var(--superficie);
+  font-size: var(--t-sm);
+}
+
+.foto__zona {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  border: 2px dashed var(--borde-control);
+  border-radius: var(--radio);
+  background: var(--fondo);
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.foto__zona:hover {
+  border-color: var(--verde-oscuro);
+  background: var(--verde-fondo);
+}
+
+.foto--error .foto__zona {
+  border-color: var(--rojo);
+}
+
+.foto__zona:focus-within {
+  outline: 3px solid var(--azul);
+  outline-offset: 2px;
+}
+
+.foto__zona input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.foto__zona img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+}
+
+.foto__texto {
+  display: grid;
+  justify-items: center;
+  gap: var(--e1);
+  padding: var(--e4);
+  color: var(--verde-oscuro);
+}
+
+.foto__texto small {
+  color: var(--texto-suave);
+}
+
+.ubicacion-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e3);
+  margin: var(--e3) 0 var(--e4);
+}
+
+.ubicacion-acciones p {
+  flex: 1 1 220px;
+  margin: 0;
+}
+
+.reporte-form > .acciones {
+  margin-top: var(--e2);
+}
+
+/* Mis reportes */
+.rejilla-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: var(--e4);
+}
+
+.tarjeta-reporte {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-lg);
+  background: var(--superficie);
+  overflow: hidden;
+  transition: border-color var(--rapido);
+}
+
+.tarjeta-reporte:hover {
+  border-color: var(--verde-oscuro);
+}
+
+.tarjeta-reporte:focus-within {
+  outline: 3px solid var(--azul);
+  outline-offset: 2px;
+}
+
+.tarjeta-reporte__foto {
+  height: 148px;
+}
+
+.tarjeta-reporte__foto img,
+.ficha__medios img,
+.detalle-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tarjeta-reporte__cuerpo {
+  display: grid;
+  gap: var(--e2);
+  padding: var(--e4);
+}
+
+.tarjeta-reporte__linea,
+.tarea__linea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e2);
+  font-size: var(--t-sm);
+  color: var(--texto-suave);
+  font-variant-numeric: tabular-nums;
+}
+
+.tarjeta-reporte h2 {
+  font-size: var(--t-md);
+}
+
+/* El botón ocupa toda la tarjeta, así el área de toque es amplia. */
+.tarjeta-reporte h2 button {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-weight: 600;
+  text-align: left;
+  outline: none;
+}
+
+.tarjeta-reporte h2 button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.tarjeta-reporte p,
+.tarea__zona {
+  display: flex;
+  gap: var(--e2);
+  font-size: var(--t-sm);
+  color: var(--texto-suave);
+}
+
+.tarjeta-reporte p svg,
+.tarea__zona svg {
+  margin-top: 3px;
+}
+
+.rejilla-tarjetas + .paginacion {
+  margin-top: var(--e4);
+  padding-inline: 0;
+}
+
+.detalle-foto {
+  height: 180px;
+  margin-bottom: var(--e4);
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+.detalle-texto {
+  font-weight: 600;
+}
+
+.detalle-texto + p {
+  margin-bottom: var(--e5);
+}
+
+/* Tareas */
+.tareas {
+  display: grid;
+  gap: var(--e5);
+}
+
+.lista-tareas {
+  display: grid;
+  gap: var(--e2);
+}
+
+.tarea {
+  display: grid;
+  gap: var(--e1);
+  padding: var(--e3) var(--e4);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--superficie);
+  color: var(--texto);
+  text-decoration: none;
+}
+
+.tarea:hover {
+  border-color: var(--verde-oscuro);
+}
+
+.tarea[aria-current] {
+  border-color: var(--verde-oscuro);
+  background: var(--verde-fondo);
+}
+
+.cerrados {
+  margin-top: var(--e4);
+}
+
+.cerrados summary {
+  min-height: var(--tactil);
+  padding: var(--e2) 0;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tareas__detalle {
+  display: grid;
+  align-content: start;
+  gap: var(--e4);
+  min-width: 0;
+}
+
+.tareas:not(.tareas--con-detalle) .tareas__detalle,
+.tareas--con-detalle .tareas__lista {
+  display: none;
+}
+
+.volver {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: var(--tactil);
+  font-weight: 600;
+}
+
+.ficha__cabecera {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--e3);
+  margin-bottom: var(--e4);
+}
+
+.ficha__medios {
+  display: grid;
+  gap: var(--e3);
+}
+
+.ficha__medios > * {
+  height: 200px;
+  border-radius: var(--radio);
+}
+
+.ficha__datos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--e3) var(--e4);
+  margin-top: var(--e4);
+}
+
+.ficha__datos dt {
+  font-size: var(--t-xs);
+  color: var(--texto-suave);
+}
+
+.ficha__datos dd {
+  font-size: var(--t-sm);
+  font-weight: 500;
+}
+
+/* Catálogo de componentes */
+.muestra > h2 {
+  margin-bottom: 0;
+}
+
+.muestra > .campo__ayuda {
+  margin-bottom: var(--e4);
+}
+
+.muestra__fila {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e2);
+  margin-bottom: var(--e4);
+}
+
+@media (min-width: 700px) {
+  .ficha__medios {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .acceso {
+    grid-template-columns: 1fr 440px;
+    gap: var(--e7);
+    min-height: calc(100dvh - 220px);
+  }
+
+  .acceso__presentacion ol {
+    display: grid;
+  }
+
+  .tareas {
+    grid-template-columns: 340px 1fr;
+    align-items: start;
+  }
+
+  .tareas .tareas__lista,
+  .tareas:not(.tareas--con-detalle) .tareas__detalle {
+    display: block;
+  }
+
+  .volver {
+    display: none;
+  }
+}

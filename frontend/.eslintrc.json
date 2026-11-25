@@ -11,7 +11,7 @@
   ],
   "ignorePatterns": ["dist"],
   "rules": {
-    "no-unused-vars": "error",
+    "no-unused-vars": ["error", { "ignoreRestSiblings": true }],
     "eqeqeq": "error",
     "prefer-const": "error",
     "no-var": "error",
