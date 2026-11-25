@@ -28,8 +28,11 @@ export function useFormulario({ inicial, validar, onGuardar }) {
   const cambiar = ({ target }) =>
     asignar(target.name, target.type === 'checkbox' ? target.checked : target.value);
 
-  const alSalir = ({ target }) => {
-    if (!(target.name in inicial) || target.type === 'checkbox') return;
+  const alSalir = ({ target, relatedTarget }) => {
+    // Un mensaje nuevo mueve la página: si el foco va a un botón, el clic no acertaría.
+    if (relatedTarget instanceof HTMLButtonElement) return;
+    // Un campo vacío se avisa al enviar: marcarlo antes interrumpe a quien apenas empieza.
+    if (!(target.name in inicial) || target.type === 'checkbox' || !target.value) return;
     visitados.current.add(target.name);
     setErrores((previos) => ({ ...previos, [target.name]: validar(valores)[target.name] }));
   };
