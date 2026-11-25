@@ -261,7 +261,7 @@
 }
 
 .detalle-foto {
-  height: 180px;
+  height: 240px;
   margin-bottom: var(--e4);
   border-radius: var(--radio);
   overflow: hidden;

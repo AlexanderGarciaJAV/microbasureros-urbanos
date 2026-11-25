@@ -31,10 +31,6 @@ export default function AccesoPage() {
 
   if (sesion) return <Navigate to={inicioDe(sesion.rol)} replace />;
 
-  const ingresar = async (datos) => {
-    await iniciarSesion(datos);
-    notificar('Iniciaste sesión.');
-  };
   const registrar = async (datos) => {
     await registrarCiudadano(datos);
     notificar('Tu cuenta está lista. Ya puedes reportar.');
@@ -59,7 +55,11 @@ export default function AccesoPage() {
       <section className="tarjeta acceso__tarjeta" aria-label="Acceso al sistema">
         <Pestanas etiqueta="Acceso" pestanas={PESTANAS} activa={pestana} onCambiar={setPestana}>
           {pestana === 'ingreso' ? (
-            <IngresoForm key={credenciales.correo} inicial={credenciales} onIngresar={ingresar} />
+            <IngresoForm
+              key={credenciales.correo}
+              inicial={credenciales}
+              onIngresar={iniciarSesion}
+            />
           ) : (
             <RegistroForm onRegistrar={registrar} />
           )}

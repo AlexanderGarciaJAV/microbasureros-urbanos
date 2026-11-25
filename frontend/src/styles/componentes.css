@@ -119,6 +119,10 @@
   margin-bottom: var(--e4);
 }
 
+.tarjeta .campo:last-child {
+  margin-bottom: 0;
+}
+
 .campo__titulo {
   display: flex;
   justify-content: space-between;
@@ -376,6 +380,14 @@ textarea.control {
   border-bottom: 1px solid var(--borde);
 }
 
+.tabla tbody tr:last-child {
+  border-bottom: 0;
+}
+
+.tabla-contenedor > .paginacion {
+  border-top: 1px solid var(--borde);
+}
+
 .tabla tbody th,
 .tabla td {
   display: flex;
@@ -446,7 +458,9 @@ textarea.control {
 /* Estados y mensajes */
 .insignia {
   flex: none;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e1);
   padding: 2px var(--e3);
   border-radius: var(--radio-total);
   background: var(--superficie-2);
