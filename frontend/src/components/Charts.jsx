@@ -12,7 +12,13 @@ export function BarChart({ datos, titulo }) {
       <svg viewBox={`0 0 ${ancho} ${alto + 46}`} role="img" aria-label={descripcion}>
         {[0, 0.25, 0.5, 0.75, 1].map((f) => (
           <g key={f}>
-            <line x1="24" x2={ancho} y1={alto - (alto - 14) * f + 6} y2={alto - (alto - 14) * f + 6} className="grafico__guia" />
+            <line
+              x1="24"
+              x2={ancho}
+              y1={alto - (alto - 14) * f + 6}
+              y2={alto - (alto - 14) * f + 6}
+              className="grafico__guia"
+            />
             <text x="0" y={alto - (alto - 14) * f + 10} className="grafico__eje">
               {Math.round(max * f)}
             </text>
@@ -23,11 +29,28 @@ export function BarChart({ datos, titulo }) {
           const x = 28 + i * paso;
           return (
             <g key={d.etiqueta}>
-              <rect x={x + paso * 0.2} y={alto + 6 - h} width={paso * 0.6} height={h} rx="3" className="grafico__barra" />
-              <text x={x + paso * 0.5} y={alto + 1 - h} textAnchor="middle" className="grafico__valor">
+              <rect
+                x={x + paso * 0.2}
+                y={alto + 6 - h}
+                width={paso * 0.6}
+                height={h}
+                rx="3"
+                className="grafico__barra"
+              />
+              <text
+                x={x + paso * 0.5}
+                y={alto + 1 - h}
+                textAnchor="middle"
+                className="grafico__valor"
+              >
                 {d.valor}
               </text>
-              <text x={x + paso * 0.5} y={alto + 26} textAnchor="middle" className="grafico__etiqueta">
+              <text
+                x={x + paso * 0.5}
+                y={alto + 26}
+                textAnchor="middle"
+                className="grafico__etiqueta"
+              >
                 {d.etiqueta}
               </text>
             </g>

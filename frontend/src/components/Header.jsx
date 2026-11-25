@@ -27,7 +27,7 @@ export default function Header() {
     <header className="header">
       <div className="header__barra">
         <Link
-          to={sesion ? visibles[0]?.to ?? '/' : '/'}
+          to={sesion ? (visibles[0]?.to ?? '/') : '/'}
           className="marca"
           aria-label="Limpieza Urbana, ir al inicio"
         >

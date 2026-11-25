@@ -2,9 +2,18 @@ import { useId, useState } from 'react';
 import { IconEye, IconEyeOff } from './Icons.jsx';
 
 // Campo de formulario controlado, con etiqueta asociada, ayuda y mensaje de error accesible.
-export default function Field({ label, error, hint, as = 'input', children, className = '', ...props }) {
+export default function Field({
+  label,
+  error,
+  hint,
+  as = 'input',
+  children,
+  className = '',
+  ...props
+}) {
   const id = useId();
-  const descripcion = [hint && `${id}-hint`, error && `${id}-error`].filter(Boolean).join(' ') || undefined;
+  const descripcion =
+    [hint && `${id}-hint`, error && `${id}-error`].filter(Boolean).join(' ') || undefined;
   const [ver, setVer] = useState(false);
   const esClave = props.type === 'password';
   const Tag = as;
@@ -31,7 +40,12 @@ export default function Field({ label, error, hint, as = 'input', children, clas
           {children}
         </Tag>
         {esClave && (
-          <button type="button" className="campo__ojo" onClick={() => setVer((v) => !v)} aria-pressed={ver}>
+          <button
+            type="button"
+            className="campo__ojo"
+            onClick={() => setVer((v) => !v)}
+            aria-pressed={ver}
+          >
             {ver ? <IconEyeOff /> : <IconEye />}
             <span className="sr-only">{ver ? 'Ocultar contraseña' : 'Mostrar contraseña'}</span>
           </button>

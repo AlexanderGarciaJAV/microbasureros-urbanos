@@ -5,7 +5,12 @@ import { IconDownload } from '../components/Icons.jsx';
 import { useApp } from '../context/AppContext.jsx';
 import { ESTADOS, MUNICIPIOS } from '../data/seed.js';
 
-const fmt = (iso) => new Date(`${iso}T12:00:00`).toLocaleDateString('es-CO', { day: '2-digit', month: 'short', year: 'numeric' });
+const fmt = (iso) =>
+  new Date(`${iso}T12:00:00`).toLocaleDateString('es-CO', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  });
 
 export default function Estadisticas() {
   const { reportes, zonas, categorias, notificar } = useApp();
@@ -17,15 +22,26 @@ export default function Estadisticas() {
   const porZona = useMemo(
     () =>
       zonas
-        .map((z) => ({ etiqueta: z.barrio, valor: reportes.filter((r) => r.zonaId === z.id).length }))
+        .map((z) => ({
+          etiqueta: z.barrio,
+          valor: reportes.filter((r) => r.zonaId === z.id).length,
+        }))
         .filter((d) => d.valor > 0),
-    [reportes, zonas],
+    [reportes, zonas]
   );
   const porCategoria = useMemo(
-    () => categorias.map((c) => ({ etiqueta: c.nombre, valor: reportes.filter((r) => r.categoriaId === c.id).length })).filter((d) => d.valor > 0),
-    [reportes, categorias],
+    () =>
+      categorias
+        .map((c) => ({
+          etiqueta: c.nombre,
+          valor: reportes.filter((r) => r.categoriaId === c.id).length,
+        }))
+        .filter((d) => d.valor > 0),
+    [reportes, categorias]
   );
-  const recientes = [...reportes].sort((a, b) => b.fecha.localeCompare(a.fecha) || b.id - a.id).slice(0, 5);
+  const recientes = [...reportes]
+    .sort((a, b) => b.fecha.localeCompare(a.fecha) || b.id - a.id)
+    .slice(0, 5);
 
   const exportar = () => {
     const filas = [['codigo', 'fecha', 'zona', 'barrio', 'municipio', 'categoria', 'estado']];
@@ -41,7 +57,9 @@ export default function Estadisticas() {
         ESTADOS.find((e) => e.id === r.estadoId)?.nombre ?? '',
       ]);
     });
-    const csv = '﻿' + filas.map((f) => f.map((c) => `"${String(c).replaceAll('"', '""')}"`).join(';')).join('\n');
+    const csv =
+      '﻿' +
+      filas.map((f) => f.map((c) => `"${String(c).replaceAll('"', '""')}"`).join(';')).join('\n');
     const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
     const a = document.createElement('a');
     a.href = url;
@@ -109,11 +127,20 @@ export default function Estadisticas() {
           <tbody>
             {recientes.map((r) => (
               <tr key={r.id}>
-                <th scope="row" data-etiqueta="ID Reporte">#{r.codigo}</th>
+                <th scope="row" data-etiqueta="ID Reporte">
+                  #{r.codigo}
+                </th>
                 <td data-etiqueta="Fecha">{fmt(r.fecha)}</td>
                 <td data-etiqueta="Zona">{zonas.find((z) => z.id === r.zonaId)?.barrio}</td>
-                <td data-etiqueta="Categoría">{categorias.find((c) => c.id === r.categoriaId)?.nombre}</td>
-                <td data-etiqueta="Estado"><Badge estadoId={r.estadoId} nombre={ESTADOS.find((e) => e.id === r.estadoId).nombre} /></td>
+                <td data-etiqueta="Categoría">
+                  {categorias.find((c) => c.id === r.categoriaId)?.nombre}
+                </td>
+                <td data-etiqueta="Estado">
+                  <Badge
+                    estadoId={r.estadoId}
+                    nombre={ESTADOS.find((e) => e.id === r.estadoId).nombre}
+                  />
+                </td>
               </tr>
             ))}
           </tbody>

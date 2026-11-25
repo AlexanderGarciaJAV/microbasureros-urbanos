@@ -23,7 +23,7 @@ export function AppProvider({ children }) {
 
   const iniciarSesion = (correo, claveIngresada) => {
     const u = usuarios.find(
-      (x) => x.correo.toLowerCase() === correo.trim().toLowerCase() && x.clave === claveIngresada,
+      (x) => x.correo.toLowerCase() === correo.trim().toLowerCase() && x.clave === claveIngresada
     );
     if (!u) return { ok: false, error: 'Correo o contraseña incorrectos.' };
     setSesion(u);
@@ -69,12 +69,18 @@ export function AppProvider({ children }) {
 
   const guardarZona = (z) =>
     setZonas((zs) =>
-      z.id ? zs.map((x) => (x.id === z.id ? { ...x, ...z } : x)) : [...zs, { ...z, id: Math.max(0, ...zs.map((x) => x.id)) + 1 }],
+      z.id
+        ? zs.map((x) => (x.id === z.id ? { ...x, ...z } : x))
+        : [...zs, { ...z, id: Math.max(0, ...zs.map((x) => x.id)) + 1 }]
     );
 
   const eliminarZona = (id) => {
     if (reportes.some((r) => r.zonaId === id)) {
-      return { ok: false, error: 'No se puede eliminar: la zona tiene reportes asociados (ON DELETE RESTRICT). Desactívala en su lugar.' };
+      return {
+        ok: false,
+        error:
+          'No se puede eliminar: la zona tiene reportes asociados (ON DELETE RESTRICT). Desactívala en su lugar.',
+      };
     }
     setZonas((zs) => zs.filter((x) => x.id !== id));
     return { ok: true };
@@ -82,12 +88,18 @@ export function AppProvider({ children }) {
 
   const guardarCategoria = (c) =>
     setCategorias((cs) =>
-      c.id ? cs.map((x) => (x.id === c.id ? { ...x, ...c } : x)) : [...cs, { ...c, id: Math.max(0, ...cs.map((x) => x.id)) + 1 }],
+      c.id
+        ? cs.map((x) => (x.id === c.id ? { ...x, ...c } : x))
+        : [...cs, { ...c, id: Math.max(0, ...cs.map((x) => x.id)) + 1 }]
     );
 
   const eliminarCategoria = (id) => {
     if (reportes.some((r) => r.categoriaId === id)) {
-      return { ok: false, error: 'No se puede eliminar: la categoría tiene reportes asociados (ON DELETE RESTRICT). Desactívala en su lugar.' };
+      return {
+        ok: false,
+        error:
+          'No se puede eliminar: la categoría tiene reportes asociados (ON DELETE RESTRICT). Desactívala en su lugar.',
+      };
     }
     setCategorias((cs) => cs.filter((x) => x.id !== id));
     return { ok: true };
@@ -95,12 +107,24 @@ export function AppProvider({ children }) {
 
   const valor = useMemo(
     () => ({
-      sesion, reportes, zonas, categorias, aviso,
-      iniciarSesion, registrarCiudadano, cerrarSesion, agregarReporte, actualizarReporte,
-      guardarZona, eliminarZona, guardarCategoria, eliminarCategoria, notificar,
+      sesion,
+      reportes,
+      zonas,
+      categorias,
+      aviso,
+      iniciarSesion,
+      registrarCiudadano,
+      cerrarSesion,
+      agregarReporte,
+      actualizarReporte,
+      guardarZona,
+      eliminarZona,
+      guardarCategoria,
+      eliminarCategoria,
+      notificar,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [sesion, reportes, zonas, categorias, aviso, usuarios],
+    [sesion, reportes, zonas, categorias, aviso, usuarios]
   );
 
   return <AppContext.Provider value={valor}>{children}</AppContext.Provider>;

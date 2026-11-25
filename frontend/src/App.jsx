@@ -23,7 +23,9 @@ function NoEncontrada() {
     <section className="tarjeta vacio">
       <h1>Página no encontrada</h1>
       <p>La dirección que buscas no existe.</p>
-      <Link to="/" className="btn btn--primario">Volver al inicio</Link>
+      <Link to="/" className="btn btn--primario">
+        Volver al inicio
+      </Link>
     </section>
   );
 }
@@ -31,7 +33,9 @@ function NoEncontrada() {
 export default function App() {
   return (
     <>
-      <a className="saltar" href="#contenido">Saltar al contenido principal</a>
+      <a className="saltar" href="#contenido">
+        Saltar al contenido principal
+      </a>
       <Header />
       <main id="contenido" className="principal" tabIndex={-1}>
         <Routes>
