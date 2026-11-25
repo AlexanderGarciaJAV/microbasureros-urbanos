@@ -140,3 +140,8 @@ Se usa Conventional Commits con el identificador de la tarea del tablero:
 <tipo>(<alcance>): <descripción en infinitivo> [MBU-NN]
 feat(backend): agregar middleware central de errores [MBU-07]
 ```
+
+## Documentación
+
+- Plan técnico: evidencia GA7-220501096-AA1-EV01.
+- Control de versiones: evidencia GA7-220501096-AA1-EV02.
