@@ -70,11 +70,11 @@ export default function Reportar() {
     return {
       archivo: v.foto(form.archivo),
       latitud:
-        form.latitud === '' || Number.isNaN(lat) || lat < -90 || lat > 90
+        form.latitud.trim() === '' || Number.isNaN(lat) || lat < -90 || lat > 90
           ? 'La latitud debe estar entre -90 y 90.'
           : '',
       longitud:
-        form.longitud === '' || Number.isNaN(lon) || lon < -180 || lon > 180
+        form.longitud.trim() === '' || Number.isNaN(lon) || lon < -180 || lon > 180
           ? 'La longitud debe estar entre -180 y 180.'
           : '',
       categoriaId: form.categoriaId ? '' : 'Selecciona una categoría.',
