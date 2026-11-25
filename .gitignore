@@ -1,0 +1,34 @@
+# Dependencias (se reinstalan con npm install)
+node_modules/
+
+# Compilación del frontend (Vite)
+dist/
+dist-ssr/
+*.local
+
+# Variables de entorno: contienen credenciales
+.env
+.env.*
+!.env.example
+
+# Fotografías subidas por los ciudadanos (en la base de datos solo va la ruta)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Copias de seguridad de la base de datos
+*_backup.sql
+*.dump
+
+# Registros y cobertura de pruebas
+logs/
+*.log
+npm-debug.log*
+coverage/
+
+# Editor y sistema operativo
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,4 @@
+# Fin de línea LF en todo el proyecto (plan técnico, sección 4.1)
+* text=auto eol=lf
+*.jpg binary
+*.png binary
