@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Alerta from './Alerta.jsx';
 import Boton from './Boton.jsx';
 import Modal from './Modal.jsx';
@@ -16,6 +16,13 @@ export default function DialogoConfirmacion({
   const [error, setError] = useState('');
   const [estaEnviando, setEstaEnviando] = useState(false);
 
+  const mensajeRef = useRef(null);
+
+  // El botón que falló desaparece: el foco pasa al mensaje para no perderse.
+  useEffect(() => {
+    if (error) mensajeRef.current.focus();
+  }, [error]);
+
   const ejecutar = async (accion) => {
     setEstaEnviando(true);
     try {
@@ -29,7 +36,9 @@ export default function DialogoConfirmacion({
 
   return (
     <Modal titulo={titulo} onCerrar={onCerrar}>
-      {error ? <Alerta>{error}</Alerta> : <p>{mensaje}</p>}
+      <div ref={mensajeRef} tabIndex={-1}>
+        {error ? <Alerta>{error}</Alerta> : <p>{mensaje}</p>}
+      </div>
       <div className="acciones">
         <Boton variante="secundario" onClick={onCerrar}>
           {error ? 'Cerrar' : textoCancelar}
