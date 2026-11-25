@@ -13,7 +13,7 @@ Autor: Javier Alexander Garcia Mariño.
 | Parte | Estado |
 |---|---|
 | Base de datos MySQL (11 tablas, trigger y datos de prueba) | Terminada |
-| Frontend en React (pantallas de RF-01 a RF-05 con datos en memoria) | Versión inicial |
+| Frontend en React (módulos de RF-01 a RF-05 con datos en memoria) | Terminado sin API |
 | Backend en Node.js (estructura, configuración y manejo de errores) | En construcción |
 
 ## Requerimientos funcionales
@@ -97,6 +97,7 @@ Los datos son ficticios y solo funcionan en el frontend mientras no se conecta a
 |---|---|---|
 | `npm run dev` | frontend y backend | Inicia el servidor de desarrollo |
 | `npm run build` | frontend | Genera la versión de producción en `dist/` |
+| `npm test` | frontend | Ejecuta las pruebas de validadores y servicios |
 | `npm run lint` | frontend y backend | Revisa el código con ESLint |
 | `npm run format` | frontend y backend | Aplica el formato de Prettier |
 
@@ -113,10 +114,21 @@ microbasureros-urbanos/
 │   ├── src/server.js         abre el puerto
 │   └── uploads/              fotografías (no se versionan)
 ├── frontend/
-│   └── src/                  components, pages, context, utils y assets
+│   ├── src/api/              servicios en memoria y datos de prueba
+│   ├── src/components/       ui (reutilizables) y layout (encabezado y pie)
+│   ├── src/context/          sesión, datos y avisos
+│   ├── src/features/         un módulo por carpeta: pages, components y hooks
+│   ├── src/hooks/            formularios, paginación y catálogos
+│   ├── src/routes/           rutas, permisos y menú
+│   ├── src/styles/           variables de diseño y estilos
+│   ├── src/utils/            validadores y formatos
+│   └── tests/                pruebas automáticas
+├── docs/                     componentes y principios SOLID
 ├── .gitattributes
 ├── .gitignore
 ├── .prettierrc
+├── CHANGELOG.md
+├── LISTA_DE_CHEQUEO.md
 └── README.md
 ```
 
@@ -141,7 +153,20 @@ Se usa Conventional Commits con el identificador de la tarea del tablero:
 feat(backend): agregar middleware central de errores [MBU-07]
 ```
 
+## Módulos
+
+| Módulo | Ruta | Rol | Se relaciona con |
+|---|---|---|---|
+| Acceso | `/` | Todos | Define el menú y los permisos |
+| Reportar y Mis reportes | `/reportar`, `/mis-reportes` | Ciudadano | Usa zonas y categorías activas |
+| Tareas | `/tareas` | Operario y administrador | Atiende los reportes y alimenta el seguimiento |
+| Zonas y categorías | `/gestion` | Administrador | Cambia las opciones del formulario de reporte |
+| Estadísticas | `/estadisticas` | Administrador | Calcula los totales de los demás módulos |
+
 ## Documentación
 
+- [Lista de chequeo](LISTA_DE_CHEQUEO.md).
+- [Componentes y principios SOLID](docs/COMPONENTES.md).
 - Plan técnico: evidencia GA7-220501096-AA1-EV01.
 - Control de versiones: evidencia GA7-220501096-AA1-EV02.
+- Componentes del frontend: evidencia GA7-220501096-AA4-EV01.
